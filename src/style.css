@@ -173,20 +173,10 @@ h3 { font-size: 1.45rem; }
   min-width: 0;
 }
 .brand-mark {
-  position: relative;
-  width: 30px;
-  height: 30px;
+  width: 64px;
+  height: 44px;
   flex-shrink: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle at 32% 30%, #a9f4ff, var(--cyan) 40%, #0b6c95 100%);
-}
-.brand-mark::after {
-  content: '';
-  position: absolute;
-  inset: 7px -9px;
-  border: 1.5px solid var(--gold);
-  border-radius: 50%;
-  transform: rotate(-24deg);
+  object-fit: contain;
 }
 .brand-text { display: flex; flex-direction: column; min-width: 0; }
 .brand-name {
@@ -679,6 +669,7 @@ h3 { font-size: 1.45rem; }
   :root { --header-h: 64px; }
   .header { background: rgba(7, 11, 26, 0.92); border-bottom-color: var(--line); }
   .brand-name { font-size: 1.15rem; }
+  .brand-mark { width: 55px; height: 38px; }
   .brand-sub { font-size: 0.7rem; }
 
   .menu-toggle {
