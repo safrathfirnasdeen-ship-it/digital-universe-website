@@ -1,46 +1,34 @@
 export function setupNavigation() {
+  const header = document.querySelector('.header');
   const navLinks = document.querySelectorAll('.nav-link');
-  const mobileToggle = document.getElementById('mobile-menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('nav-menu');
 
-  // Smooth scroll links
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetSection = document.querySelector(link.getAttribute('href'));
-      if (targetSection) targetSection.scrollIntoView({ behavior: 'smooth' });
+  const setMenu = (open) => {
+    if (!menu || !toggle) return;
+    menu.classList.toggle('active', open);
+    toggle.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
 
-      // Close mobile menu
-      if (navMenu && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        if (mobileToggle) {
-          mobileToggle.classList.remove('active');
-          mobileToggle.setAttribute('aria-expanded', 'false');
-          mobileToggle.setAttribute('aria-label', 'Open menu');
-        }
-      }
-    });
-  });
+  toggle?.addEventListener('click', () => setMenu(!menu.classList.contains('active')));
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 
-  // Mobile menu toggle
-  if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      const open = navMenu.classList.toggle('active');
-      mobileToggle.classList.toggle('active', open);
-      mobileToggle.setAttribute('aria-expanded', String(open));
-      mobileToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    });
-  }
+  // Header gets a solid background once you scroll past the top.
+  const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 10);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  // Active section indicator — IntersectionObserver instead of measuring
-  // every section on every scroll event.
+  // Highlight the section you're reading.
   const linkFor = id => document.querySelector(`.nav-link[href="#${id}"]`);
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      navLinks.forEach(l => l.classList.remove('active'));
-      linkFor(entry.target.id)?.classList.add('active');
+      navLinks.forEach(l => l.removeAttribute('aria-current'));
+      linkFor(entry.target.id)?.setAttribute('aria-current', 'true');
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
-  document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+  document.querySelectorAll('main section[id]').forEach(s => observer.observe(s));
 }

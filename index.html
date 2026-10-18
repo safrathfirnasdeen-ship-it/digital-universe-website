@@ -3,77 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#030611">
+  <meta name="theme-color" content="#070B1A">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <title>Digital Universe Training Institute | Koothanallur</title>
-  <meta name="description" content="Empower your skills at Digital Universe Training Institute, Koothanallur. Quality computer education, MS-Office, Tally Prime, DTP, English Speaking, Hardware & Typing.">
+  <meta name="description" content="Computer training in Koothanallur — MS-Office, Tally with GST, web and graphic design, programming, spoken English and more. Scholarships up to 85%. We also build websites for local businesses.">
   <meta name="google-site-verification" content="wD6nCH7A3pao3PueSfF9prBkJGvcEp9wMk7KFxIwTy4" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap">
-  <link rel="preload" as="image" type="image/webp" href="/assets/du-banner-1024.webp" imagesrcset="/assets/du-banner-600.webp 600w, /assets/du-banner-1024.webp 1024w" imagesizes="(max-width: 600px) 92vw, 540px" fetchpriority="high">
-  <link rel="stylesheet" href="./src/style.css">
+  <meta property="og:title" content="Digital Universe Training Institute, Koothanallur">
+  <meta property="og:description" content="Practical computer courses with certification, job support and scholarships up to 85%. Website creation for local businesses.">
+  <meta property="og:image" content="https://digitaluniverseknr.com/assets/du-banner.jpg">
+  <meta property="og:type" content="website">
+  <link rel="preload" as="image" type="image/webp" href="/assets/du-banner-1024.webp" imagesrcset="/assets/du-banner-600.webp 600w, /assets/du-banner-1024.webp 1024w" imagesizes="(max-width: 900px) 92vw, 520px" fetchpriority="high">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ══════════════════════════════════════════════
-       CINEMATIC CSS ANIMATED SPACE BACKGROUND SYSTEM
-       ══════════════════════════════════════════════ -->
+  <!-- Quiet sky: static nebula + canvas stars -->
+  <div class="sky" aria-hidden="true"></div>
+  <canvas id="star-canvas" aria-hidden="true"></canvas>
 
-  <!-- Deep nebula base layer -->
-  <div id="space-bg"></div>
-
-  <!-- Animated glowing light orbs -->
-  <div class="orb-1"></div>
-  <div class="orb-2"></div>
-  <div class="orb-3"></div>
-  <div class="orb-4"></div>
-
-  <!-- Perspective grid overlay -->
-  <div class="grid-overlay"></div>
-
-  <!-- Edge vignette -->
-  <div class="vignette-overlay"></div>
-
-  <!-- Shooting stars -->
-  <div class="shooting-stars">
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
-    <div class="shooting-star"></div>
-  </div>
-
-  <!-- Canvas for JS particle starfield -->
-  <canvas id="star-canvas"></canvas>
-
-  <!-- Fixed Top Header -->
   <header class="header">
-    <div class="header-container">
-      <a href="#home" class="logo-brand">
-        <div class="logo-orb"></div>
-        <div class="logo-text">
-          <h1>DIGITAL UNIVERSE</h1>
-          <span>TRAINING INSTITUTE &mdash; KOOTHANALLUR</span>
-        </div>
+    <div class="wrap header-inner">
+      <a href="#home" class="brand" aria-label="Digital Universe — home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <span class="brand-name">Digital Universe</span>
+          <span class="brand-sub">Training Institute, Koothanallur</span>
+        </span>
       </a>
 
-      <ul class="nav-links" id="nav-menu">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#courses" class="nav-link">Courses</a></li>
-        <li><a href="#why-us" class="nav-link">Why Us</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
+      <nav aria-label="Main">
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="#courses" class="nav-link">Courses</a></li>
+          <li><a href="#websites" class="nav-link">Website creation</a></li>
+          <li><a href="#why-us" class="nav-link">Why us</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
 
-      <div class="header-right">
-        <a id="btn-enquiry-header" href="#contact" class="btn-enquiry">
-          <i data-lucide="message-circle"></i> Enquiry
+      <div class="header-actions">
+        <a href="tel:7845360460" class="btn btn-ghost btn-sm header-call">
+          <i data-lucide="phone"></i> 7845 360 460
         </a>
-        <a href="#contact" class="btn-enroll">
-          <i data-lucide="sparkles"></i> Enroll Now
-        </a>
+        <a href="#contact" class="btn btn-gold btn-sm header-enrol">Enrol now</a>
         <button type="button" class="menu-toggle" id="mobile-menu-toggle"
           aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
           <span></span><span></span><span></span>
@@ -82,399 +54,296 @@
     </div>
   </header>
 
-  <!-- Floating Call Button (Bottom Right) -->
-  <a href="tel:7845360460" class="fixed-call-btn">
-    <i data-lucide="phone"></i> Call 7845 360 460
+  <a href="tel:7845360460" class="fixed-call-btn" aria-label="Call 7845 360 460">
+    <i data-lucide="phone"></i><span>Call now</span>
   </a>
 
-  <!-- Main Content Layout -->
-  <div class="content-wrapper">
+  <main id="main">
 
-    <!-- CHAPTER ONE: HERO -->
-    <section id="home">
-      <div class="hero-container" style="position: relative;">
-        <div>
-          <div class="chapter-pill">
-            <span>•</span> CHAPTER ONE — THE JOURNEY BEGINS
-          </div>
-
-          <h1 class="hero-title-main">
-            <span class="title-digital">DIGITAL</span>
-            <span class="title-universe">UNIVERSE</span>
-            <span class="title-institute">Training Institute</span>
-          </h1>
-
-          <p class="hero-subtitle">
-            Empower your skills. Shape your future. A quiet room in Koothanallur where beginners become computer-confident, job-ready professionals — one careful lesson at a time.
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Computer training in Koothanallur</p>
+          <h1 class="hero-title">Learn computers the right way, and walk out job-ready.</h1>
+          <p class="hero-lead">
+            Patient, hands-on classes in small batches — from your first mouse click to Tally, design and programming.
+            Run by the Al Khadija Educational &amp; Charitable Trust.
           </p>
-
-          <div class="hero-btn-group">
-            <a href="#courses" class="btn-journey">
-              <i data-lucide="graduation-cap"></i> Begin Your Journey
-            </a>
-            <a href="tel:7845360460" class="btn-phone-dark">
-              <i data-lucide="phone"></i> 7845 360 460
-            </a>
+          <div class="hero-actions">
+            <a href="#courses" class="btn btn-gold"><i data-lucide="graduation-cap"></i> See the courses</a>
+            <a href="https://wa.me/917845360460?text=Hi%20Digital%20Universe%2C%20I%27d%20like%20to%20know%20more%20about%20your%20courses." target="_blank" rel="noopener" class="btn btn-ghost"><i data-lucide="message-circle"></i> Ask on WhatsApp</a>
           </div>
-
-          <div class="hero-meta-bar">
-            <span>AL KHADIJA TRUST</span>
-            <span>REGD BIV 23 / 2023</span>
-            <span>KOOTHANALLUR</span>
-          </div>
+          <ul class="hero-facts">
+            <li><i data-lucide="layers"></i> 12 certified courses</li>
+            <li><i data-lucide="award"></i> Scholarships up to 85%</li>
+            <li><i data-lucide="briefcase"></i> Job placement support</li>
+          </ul>
         </div>
 
-        <!-- RIGHT SIDE: Official Digital Universe Banner (Slanted) -->
-        <div class="hero-logo-panel">
-          <div class="hero-banner-wrap">
-            <div class="hero-banner-glow"></div>
+        <div class="hero-visual">
+          <svg class="orbit orbit-back" viewBox="0 0 800 400" aria-hidden="true">
+            <defs>
+              <linearGradient id="orbit-grad" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#E3B35C"/>
+                <stop offset="0.6" stop-color="#E3B35C" stop-opacity="0.7"/>
+                <stop offset="1" stop-color="#5CD3EA" stop-opacity="0.85"/>
+              </linearGradient>
+            </defs>
+            <g transform="rotate(-10 400 200)">
+              <path id="orbit-path" d="M 8 200 A 392 176 0 1 0 792 200 A 392 176 0 1 0 8 200 Z" fill="none" stroke="url(#orbit-grad)" stroke-width="1.6" opacity="0.55"/>
+              <circle r="5" class="orbit-dot">
+                <animateMotion dur="16s" repeatCount="indefinite"><mpath href="#orbit-path"/></animateMotion>
+              </circle>
+            </g>
+          </svg>
+          <figure class="hero-banner">
             <picture>
               <source type="image/webp"
                 srcset="/assets/du-banner-600.webp 600w, /assets/du-banner-1024.webp 1024w"
-                sizes="(max-width: 600px) 92vw, 540px">
-              <img
-                src="/assets/du-banner.jpg"
-                alt="Digital Universe Training Institute — Koothanallur"
-                class="hero-banner-img"
-                width="1024" height="523"
-                fetchpriority="high" decoding="async"
-              />
+                sizes="(max-width: 900px) 92vw, 520px">
+              <img src="/assets/du-banner.jpg"
+                alt="Digital Universe Training Institute banner — A.R Road, Koothanallur"
+                width="1024" height="523" fetchpriority="high" decoding="async">
             </picture>
-          </div>
-
-          <!-- Stats row below -->
-          <div class="hero-logo-stats">
-            <div class="hero-stat-item">
-              <span class="hero-stat-num">12+</span>
-              <span class="hero-stat-label">Courses</span>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat-item">
-              <span class="hero-stat-num">85%</span>
-              <span class="hero-stat-label">Scholarship</span>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat-item">
-              <span class="hero-stat-num">100%</span>
-              <span class="hero-stat-label">Job Support</span>
-            </div>
-          </div>
+          </figure>
+          <svg class="orbit orbit-front" viewBox="0 0 800 400" aria-hidden="true">
+            <defs>
+              <clipPath id="orbit-front-half"><rect x="0" y="200" width="800" height="220"/></clipPath>
+            </defs>
+            <g transform="rotate(-10 400 200)">
+              <path d="M 8 200 A 392 176 0 1 0 792 200 A 392 176 0 1 0 8 200 Z" fill="none" stroke="url(#orbit-grad)" stroke-width="1.8" clip-path="url(#orbit-front-half)"/>
+              <g clip-path="url(#orbit-front-half)">
+                <circle r="5" class="orbit-dot">
+                  <animateMotion dur="16s" repeatCount="indefinite"><mpath href="#orbit-path"/></animateMotion>
+                </circle>
+              </g>
+            </g>
+          </svg>
         </div>
-
       </div>
     </section>
 
-    <!-- CHAPTER TWO: ABOUT US -->
-    <section id="about">
-      <div class="watermark-num">02</div>
-      <div class="chapter-pill">CHAPTER TWO</div>
-      <h2 class="section-headline">Our Origin Story</h2>
-      <p class="section-subtext">
-        Providing patient, hands-on computer education to students who were never given the chance before.
-      </p>
-
-      <div class="cards-grid-3">
-        <div class="rich-card">
-          <div class="card-icon-badge"><i data-lucide="heart"></i></div>
-          <h3>Our Mission</h3>
-          <p>Your success is our mission. Every student walks in with doubt and walks out with a portfolio.</p>
-        </div>
-
-        <div class="rich-card">
-          <div class="card-icon-badge"><i data-lucide="book-open"></i></div>
-          <h3>Quality Training</h3>
-          <p>Small batches, personal attention, and real-world assignments — not slides.</p>
-        </div>
-
-        <div class="rich-card">
-          <div class="card-icon-badge"><i data-lucide="award"></i></div>
-          <h3>Bright Future</h3>
-          <p>Certification, resume prep and 100% job-support to launch your career.</p>
-        </div>
-      </div>
-
-      <div class="quote-block">
-        <h3>"Empower your skills. Shape your future."</h3>
-        <span>— LEARN TODAY, LEAD TOMORROW</span>
+    <!-- COURSES -->
+    <section id="courses" class="section">
+      <div class="wrap">
+        <header class="section-head">
+          <h2>Courses</h2>
+          <p>Twelve practical courses, each ending with a certificate. Tap a course to see what you'll learn.</p>
+        </header>
+        <ul class="course-list" id="courses-cards-container">
+          <!-- Rendered by main.js -->
+        </ul>
       </div>
     </section>
 
-    <!-- CHAPTER THREE: COURSES -->
-    <section id="courses">
-      <div class="watermark-num">03</div>
-      <div class="chapter-pill">CHAPTER THREE — THE COURSES</div>
-      <h2 class="section-headline">12 Courses. One Digital Universe.</h2>
-      <p class="section-subtext">
-        Every course is a gateway — hands-on, certified, and built to be job-ready. Pick your path, we take care of the launch.
-      </p>
-
-      <div class="courses-container" id="courses-cards-container">
-        <!-- Rendered by main.js -->
-      </div>
-
-      <!-- Scholarship Banner -->
-      <div class="scholarship-banner" id="scholarship-section">
-        <div class="scholarship-glow"></div>
-        <div class="scholarship-left">
-          <span class="scholarship-label">🏆 SCHOLARSHIP OFFER</span>
-          <h3 class="scholarship-headline">Get your Scholarship<br><span class="scholarship-pct">upto 85%</span></h3>
-          <p class="scholarship-sub">For our student's bright future.</p>
-        </div>
-        <div class="scholarship-right">
-          <ul class="scholarship-list">
-            <li><i data-lucide="check-circle-2"></i> Merit-based scholarship for top students</li>
-            <li><i data-lucide="check-circle-2"></i> Special support for economically weaker sections</li>
+    <!-- SCHOLARSHIP -->
+    <section id="scholarship" class="section section-tight">
+      <div class="wrap">
+        <div class="scholarship">
+          <div class="scholarship-head">
+            <h2>Scholarships of up to <span class="figure">85%</span></h2>
+            <p>Because fees shouldn't decide who gets to learn.</p>
+          </div>
+          <ul class="tick-list">
+            <li><i data-lucide="check-circle-2"></i> Merit scholarships for top students</li>
+            <li><i data-lucide="check-circle-2"></i> Support for economically weaker families</li>
             <li><i data-lucide="check-circle-2"></i> Extra scholarship for girl students</li>
-            <li><i data-lucide="check-circle-2"></i> Early-bird discount for first 5 enrollments per batch</li>
+            <li><i data-lucide="check-circle-2"></i> Early-bird discount for the first 5 enrolments in each batch</li>
           </ul>
-          <a href="#contact" class="btn-scholarship">
-            <i data-lucide="sparkles"></i> Apply for Scholarship
-          </a>
+          <a href="https://wa.me/917845360460?text=Hi%20Digital%20Universe%2C%20I%27d%20like%20to%20apply%20for%20the%20scholarship." target="_blank" rel="noopener" class="btn btn-gold">Apply for a scholarship</a>
         </div>
       </div>
     </section>
 
-    <!-- SPECIAL ONLINE COURSES — Girls & Housewife -->
-    <section id="online-courses" style="padding-top: 4rem;">
-      <div class="special-online-banner">
-        <div class="special-online-glow"></div>
-        <div class="special-online-badge">
-          <i data-lucide="wifi"></i> ONLINE &amp; OFFLINE
-        </div>
-        <div class="special-online-content">
-          <div class="special-tick">✓</div>
-          <div>
-            <h2 class="special-online-title">
-              Special <span class="online-highlight">online</span> Courses<br>
-              for <span class="girls-highlight">Girls &amp; Housewife</span>
-            </h2>
-            <p class="special-online-sub">Offline and Online Courses Available</p>
-            <p class="special-online-desc">
-              Learn from the comfort of your home through live online sessions — flexible timings, women-friendly batches, certified courses, and full support throughout.
-            </p>
-          </div>
-        </div>
-        <div class="special-features-grid">
-          <div class="special-feature-item">
-            <i data-lucide="wifi"></i><span>Live Online Classes</span>
-          </div>
-          <div class="special-feature-item">
-            <i data-lucide="clock"></i><span>Flexible Timings</span>
-          </div>
-          <div class="special-feature-item">
-            <i data-lucide="shield-check"></i><span>Safe Environment</span>
-          </div>
-          <div class="special-feature-item">
-            <i data-lucide="award"></i><span>Certification</span>
-          </div>
-          <div class="special-feature-item">
-            <i data-lucide="video"></i><span>Recorded Sessions</span>
-          </div>
-          <div class="special-feature-item">
-            <i data-lucide="users"></i><span>Women-Only Batches</span>
-          </div>
-        </div>
-        <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.6rem;">
-          <span class="course-tag">MS-Office</span>
-          <span class="course-tag">Tally with GST</span>
-          <span class="course-tag">Graphic Designing</span>
-          <span class="course-tag">Digital Marketing</span>
-          <span class="course-tag">Spoken English</span>
-          <span class="course-tag">Data Entry / Typing</span>
-          <span class="course-tag">Video Editing</span>
-        </div>
-        <a href="#contact" class="btn-special-enroll">
-          <i data-lucide="message-circle"></i> Enquire About Online Courses
-        </a>
-      </div>
-    </section>
-
-    <!-- CHAPTER FOUR: WHY US -->
-    <section id="why-us">
-      <div class="watermark-num">04</div>
-      <div class="chapter-pill">CHAPTER FOUR — WHY US</div>
-      <h2 class="section-headline">A small institute with giant-sized care.</h2>
-      <p class="section-subtext">
-        Built around individual attention so no student is ever left behind.
-      </p>
-
-      <div class="cards-grid-3" style="margin-bottom: 1.5rem;">
-        <div class="rich-card">
-          <div class="card-num-watermark">01</div>
-          <div class="card-icon-badge"><i data-lucide="graduation-cap"></i></div>
-          <h3>Expert Trainers</h3>
-          <p>Practising professionals who teach the way real work happens.</p>
-        </div>
-
-        <div class="rich-card">
-          <div class="card-num-watermark">02</div>
-          <div class="card-icon-badge"><i data-lucide="clipboard-check"></i></div>
-          <h3>Practical Training</h3>
-          <p>Every concept lands on your keyboard, not just on a slide.</p>
-        </div>
-
-        <div class="rich-card">
-          <div class="card-num-watermark">03</div>
-          <div class="card-icon-badge"><i data-lucide="check-circle-2"></i></div>
-          <h3>Certification</h3>
-          <p>Recognised course completion certificate for every learner.</p>
-        </div>
-      </div>
-
-      <div class="cards-grid-2">
-        <div class="rich-card">
-          <div class="card-num-watermark">04</div>
-          <div class="card-icon-badge"><i data-lucide="briefcase"></i></div>
-          <h3>100% Job Support</h3>
-          <p>Resume, interview prep and active placement referrals.</p>
-        </div>
-
-        <div class="rich-card">
-          <div class="card-num-watermark">05</div>
-          <div class="card-icon-badge"><i data-lucide="users"></i></div>
-          <h3>Small Batches</h3>
-          <p>Personal attention — no student left behind, ever.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CHAPTER FIVE: CONTACT -->
-    <section id="contact">
-      <div class="watermark-num">05</div>
-      <div class="chapter-pill">CHAPTER FIVE — CONTACT &amp; LOCATION</div>
-      <h2 class="section-headline">Visit Us or Reach Out</h2>
-      <p class="section-subtext">
-        Located on A.R Road, Koothanallur. Step inside or send an inquiry on WhatsApp.
-      </p>
-
-      <div class="contact-grid-rich">
-        <!-- Contact Information & Map -->
+    <!-- ONLINE FOR WOMEN -->
+    <section id="online-courses" class="section">
+      <div class="wrap split">
         <div>
-          <div class="rich-card" style="margin-bottom: 1.5rem;">
-            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 1rem;">
-              <i data-lucide="map-pin" style="color: var(--cyan-bright);"></i> Institute Address
-            </h3>
-            <p style="color: #fff; font-weight: 600;">A.R Road, Koothanallur</p>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.3rem;">
-              Subsidiary of Al Khadija Educational &amp; Charitable Trust (Regd: BIV 23/2023)
-            </p>
-            <p style="color: var(--orange-light); font-size: 0.8rem; margin-top: 0.5rem;">
-              GPS Coordinates: 10.706168, 79.519312
-            </p>
+          <h2>Online classes for girls and homemakers</h2>
+          <p class="lead">
+            Learn from home with live online sessions in women-only batches, at times that fit around your day.
+            Prefer the classroom? Offline batches run too.
+          </p>
+          <p class="muted">MS-Office, Tally with GST, graphic design, digital marketing, spoken English, data entry and video editing.</p>
+          <a href="https://wa.me/917845360460?text=Hi%20Digital%20Universe%2C%20I%27d%20like%20details%20about%20the%20online%20courses%20for%20women." target="_blank" rel="noopener" class="btn btn-ghost"><i data-lucide="message-circle"></i> Ask about online classes</a>
+        </div>
+        <ul class="feature-list">
+          <li><i data-lucide="wifi"></i><div><strong>Live online classes</strong><span>Learn with a trainer in real time.</span></div></li>
+          <li><i data-lucide="clock"></i><div><strong>Flexible timings</strong><span>Pick a batch time that suits you.</span></div></li>
+          <li><i data-lucide="users"></i><div><strong>Women-only batches</strong><span>A comfortable, safe environment.</span></div></li>
+          <li><i data-lucide="video"></i><div><strong>Recorded sessions</strong><span>Missed a class? Watch it later.</span></div></li>
+          <li><i data-lucide="award"></i><div><strong>Certificate</strong><span>The same certificate as classroom students.</span></div></li>
+        </ul>
+      </div>
+    </section>
 
-            <!-- Phone -->
-            <div style="display:flex; align-items:center; gap:0.6rem; margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.07);">
-              <span style="width:34px;height:34px;border-radius:50%;background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <i data-lucide="phone" style="width:15px;height:15px;color:var(--cyan-bright);"></i>
-              </span>
-              <div>
-                <p style="font-size:0.7rem;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;">Phone</p>
-                <a href="tel:7845360460" style="color:#fff;font-weight:600;font-size:0.95rem;text-decoration:none;">7845 360 460</a>
-              </div>
-            </div>
+    <!-- WEBSITE CREATION -->
+    <section id="websites" class="section section-alt">
+      <div class="wrap">
+        <header class="section-head">
+          <h2>We build websites for your business</h2>
+          <p>
+            Shops, clinics, schools, restaurants and trusts — we design and launch a website that fits what you need,
+            then help you look after it. You're looking at one of ours.
+          </p>
+        </header>
 
-            <!-- Email -->
-            <div style="display:flex; align-items:center; gap:0.6rem; margin-top:0.8rem;">
-              <span style="width:34px;height:34px;border-radius:50%;background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <i data-lucide="mail" style="width:15px;height:15px;color:var(--orange-light);"></i>
-              </span>
-              <div>
-                <p style="font-size:0.7rem;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;">Email</p>
-                <a href="mailto:digitaluniverse345@gmail.com" style="color:var(--orange-light);font-weight:600;font-size:0.9rem;text-decoration:none;word-break:break-all;">digitaluniverse345@gmail.com</a>
-              </div>
-            </div>
+        <div class="packages">
+          <article class="package">
+            <h3>Starter</h3>
+            <p class="package-for">For shops, freelancers and small services that need to be found online.</p>
+            <ul class="tick-list">
+              <li><i data-lucide="check"></i> One-page website</li>
+              <li><i data-lucide="check"></i> Works well on mobile</li>
+              <li><i data-lucide="check"></i> Call and WhatsApp buttons</li>
+              <li><i data-lucide="check"></i> Google Maps location</li>
+              <li><i data-lucide="check"></i> Domain and hosting setup</li>
+            </ul>
+            <a href="https://wa.me/917845360460?text=Hi%20Digital%20Universe%2C%20I%27d%20like%20a%20quote%20for%20the%20Starter%20website%20package." target="_blank" rel="noopener" class="btn btn-ghost">Get a quote</a>
+          </article>
 
-            <!-- WhatsApp -->
-            <div style="display:flex; align-items:center; gap:0.6rem; margin-top:0.8rem;">
-              <span style="width:34px;height:34px;border-radius:50%;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <i data-lucide="message-circle" style="width:15px;height:15px;color:#25d366;"></i>
-              </span>
-              <div>
-                <p style="font-size:0.7rem;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;">WhatsApp</p>
-                <a href="https://wa.me/917845360460" target="_blank" rel="noopener" style="color:#25d366;font-weight:600;font-size:0.95rem;text-decoration:none;">+91 7845 360 460</a>
-              </div>
-            </div>
-          </div>
+          <article class="package package-featured">
+            <p class="package-note">Suits most businesses</p>
+            <h3>Business</h3>
+            <p class="package-for">For clinics, schools, showrooms and firms that want a complete online presence.</p>
+            <ul class="tick-list">
+              <li><i data-lucide="check"></i> Everything in Starter</li>
+              <li><i data-lucide="check"></i> Several pages — services, gallery, about, contact</li>
+              <li><i data-lucide="check"></i> Enquiry form to WhatsApp and email</li>
+              <li><i data-lucide="check"></i> Google Business profile setup</li>
+              <li><i data-lucide="check"></i> Basic SEO so customers can find you</li>
+            </ul>
+            <a href="https://wa.me/917845360460?text=Hi%20Digital%20Universe%2C%20I%27d%20like%20a%20quote%20for%20the%20Business%20website%20package." target="_blank" rel="noopener" class="btn btn-gold">Get a quote</a>
+          </article>
 
-          <div id="map-embed-container"></div>
+          <article class="package">
+            <h3>Online store</h3>
+            <p class="package-for">For businesses that want to show products and take orders online.</p>
+            <ul class="tick-list">
+              <li><i data-lucide="check"></i> Everything in Business</li>
+              <li><i data-lucide="check"></i> Product catalogue with photos and prices</li>
+              <li><i data-lucide="check"></i> Order on WhatsApp or pay online</li>
+              <li><i data-lucide="check"></i> Easy updates for new products</li>
+              <li><i data-lucide="check"></i> Training to manage it yourself</li>
+            </ul>
+            <a href="https://wa.me/917845360460?text=Hi%20Digital%20Universe%2C%20I%27d%20like%20a%20quote%20for%20the%20Online%20Store%20website%20package." target="_blank" rel="noopener" class="btn btn-ghost">Get a quote</a>
+          </article>
         </div>
 
-        <!-- Enroll / Enquiry Form -->
-        <div class="rich-card">
-          <!-- Tab Toggle -->
-          <div style="display: flex; gap: 0.6rem; margin-bottom: 1.4rem;">
-            <button type="button" id="tab-enroll" class="form-tab active-tab" onclick="switchTab('enroll')">
-              <i data-lucide="sparkles"></i> Enroll Now
-            </button>
-            <button type="button" id="tab-enquiry" class="form-tab" onclick="switchTab('enquiry')">
-              <i data-lucide="message-circle"></i> Enquiry
-            </button>
+        <ol class="process">
+          <li><strong>Tell us what you need</strong><span>A quick call or WhatsApp chat about your business.</span></li>
+          <li><strong>See a design</strong><span>We share a preview before anything goes live.</span></li>
+          <li><strong>Make it yours</strong><span>We adjust words, photos and colours until it's right.</span></li>
+          <li><strong>Go live</strong><span>Your site goes online on your own domain.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- WHY US -->
+    <section id="why-us" class="section">
+      <div class="wrap split split-wide">
+        <div>
+          <h2>A small institute that knows every student by name</h2>
+          <p class="lead">
+            We started to give patient, practical computer education to students who never had the chance.
+            Everyone walks in with doubts. We make sure they walk out with skills, a certificate and a plan.
+          </p>
+          <blockquote class="motto">
+            <p>Learn today, lead tomorrow.</p>
+          </blockquote>
+        </div>
+        <ul class="feature-list">
+          <li><i data-lucide="graduation-cap"></i><div><strong>Experienced trainers</strong><span>They teach the way real work is done.</span></div></li>
+          <li><i data-lucide="monitor"></i><div><strong>Hands-on practice</strong><span>Every lesson happens on a computer, not a slide.</span></div></li>
+          <li><i data-lucide="users"></i><div><strong>Small batches</strong><span>Personal attention, so nobody falls behind.</span></div></li>
+          <li><i data-lucide="clipboard-check"></i><div><strong>Certificate for every course</strong><span>Proof of your skills for employers.</span></div></li>
+          <li><i data-lucide="briefcase"></i><div><strong>Job support</strong><span>Resume help, interview practice and referrals.</span></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-alt">
+      <div class="wrap">
+        <header class="section-head">
+          <h2>Visit us or send a message</h2>
+          <p>Come to the institute on A.R Road, call, or fill in the form and we'll reply on WhatsApp.</p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <dl class="contact-list">
+              <div><dt><i data-lucide="map-pin"></i> Address</dt><dd>A.R Road, Koothanallur, Thiruvarur District</dd></div>
+              <div><dt><i data-lucide="phone"></i> Phone</dt><dd><a href="tel:7845360460">7845 360 460</a></dd></div>
+              <div><dt><i data-lucide="message-circle"></i> WhatsApp</dt><dd><a href="https://wa.me/917845360460" target="_blank" rel="noopener">+91 78453 60460</a></dd></div>
+              <div><dt><i data-lucide="mail"></i> Email</dt><dd><a href="mailto:digitaluniverse345@gmail.com">digitaluniverse345@gmail.com</a></dd></div>
+            </dl>
+            <div id="map-embed-container"></div>
           </div>
 
-          <p id="form-desc" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">
-            Fill in your details — we'll reach you on WhatsApp &amp; Email.
-          </p>
+          <form id="quick-inquiry-form" class="enquiry-form" novalidate>
+            <h3>Send an enquiry</h3>
+            <label for="form-name">Your name</label>
+            <input type="text" id="form-name" autocomplete="name" required>
 
-          <form id="quick-inquiry-form" class="inquiry-form-rich">
-            <div class="form-group-rich">
-              <input type="text" id="form-name" placeholder="Your Name *" required>
-            </div>
+            <label for="form-phone">Mobile number</label>
+            <input type="tel" id="form-phone" autocomplete="tel" inputmode="tel" required>
 
-            <div class="form-group-rich">
-              <input type="tel" id="form-phone" placeholder="Mobile Number *" required>
-            </div>
+            <label for="form-course">I'm interested in</label>
+            <select id="form-course">
+              <option value="">Choose one</option>
+              <optgroup label="Courses">
+                <option>Basics of Computer</option>
+                <option>MS-Office</option>
+                <option>Tally with GST</option>
+                <option>Web Designing</option>
+                <option>Graphic Designing</option>
+                <option>Programming</option>
+                <option>Digital Marketing</option>
+                <option>Video Editing</option>
+                <option>Spoken English</option>
+                <option>Hardware &amp; Networking</option>
+                <option>Data Entry / Typing</option>
+                <option>Full Stack Development</option>
+                <option>Online classes for women</option>
+              </optgroup>
+              <optgroup label="Services">
+                <option>Website creation for my business</option>
+              </optgroup>
+              <option>Something else</option>
+            </select>
 
-            <div class="form-group-rich" id="course-field">
-              <select id="form-course">
-                <option value="" disabled selected>Select Course *</option>
-                <option value="Basics of Computer">Basics of Computer</option>
-                <option value="MS-Office">MS-Office (Word, Excel, PowerPoint)</option>
-                <option value="Tally with GST">Tally with GST</option>
-                <option value="Web Designing">Web Designing</option>
-                <option value="Graphic Designing">Graphic Designing</option>
-                <option value="Programming">Programming</option>
-                <option value="Digital Marketing">Digital Marketing</option>
-                <option value="Video Editing">Video Editing</option>
-                <option value="Spoken English">Spoken English</option>
-                <option value="Hardware &amp; Networking">Hardware &amp; Networking</option>
-                <option value="Data Entry / Typing">Data Entry / Typing</option>
-                <option value="Full Stack Development">Full Stack Development</option>
-                <option value="Online Course (Girls/Housewife)">Special Online Course — Girls &amp; Housewife</option>
-              </select>
-            </div>
+            <label for="form-message">Message <span class="optional">(optional)</span></label>
+            <textarea id="form-message" rows="3"></textarea>
 
-            <div class="form-group-rich">
-              <textarea id="form-message" rows="3" placeholder="Your message or question..."></textarea>
-            </div>
-
-            <!-- Unified Submit Button -->
-            <button type="submit" id="btn-submit-combined" class="btn-journey" style="width: 100%; justify-content: center; border: none; cursor: pointer;">
-              <i data-lucide="send"></i> Send via WhatsApp &amp; Email
+            <button type="submit" id="btn-submit-combined" class="btn btn-gold btn-block">
+              <i data-lucide="send"></i> Send on WhatsApp
             </button>
-
-            <div id="form-status" style="margin-top: 0.8rem;"></div>
+            <div id="form-status" role="status" aria-live="polite"></div>
           </form>
         </div>
       </div>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer style="text-align:center;padding:3rem;color:var(--text-muted);font-size:0.85rem;border-top:1px solid rgba(255,255,255,0.06);">
-      <p>© 2026 Digital Universe Training Institute. All Rights Reserved. • A.R Road, Koothanallur</p>
-      <p style="font-size:0.75rem;margin-top:0.4rem;color:var(--orange-light);">Run by Al Khadija Educational and Charitable Trust (Regd No: BIV 23/2023)</p>
-      <p style="font-size:0.75rem;margin-top:0.4rem;">
-        <a href="mailto:digitaluniverse345@gmail.com" style="color:var(--cyan-bright);text-decoration:none;">✉ digitaluniverse345@gmail.com</a>
-        &nbsp;|&nbsp;
-        <a href="tel:7845360460" style="color:var(--cyan-bright);text-decoration:none;">📞 7845 360 460</a>
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <p class="footer-brand">Digital Universe Training Institute</p>
+        <p>A.R Road, Koothanallur. Run by the Al Khadija Educational and Charitable Trust (Regd. No. BIV 23/2023).</p>
+      </div>
+      <p class="footer-links">
+        <a href="tel:7845360460">7845 360 460</a>
+        <a href="mailto:digitaluniverse345@gmail.com">digitaluniverse345@gmail.com</a>
       </p>
-    </footer>
+      <p class="footer-copy">© 2026 Digital Universe Training Institute</p>
+    </div>
+  </footer>
 
-  </div>
-
-  <!-- Course Story Modal Popup -->
-  <div class="modal-overlay" id="course-modal">
-    <div class="modal-content-box">
-      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">
+  <div class="modal-overlay" id="course-modal" aria-hidden="true">
+    <div class="modal-content-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close">
         <i data-lucide="x"></i>
       </button>
       <div id="modal-container"></div>

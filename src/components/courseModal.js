@@ -1,102 +1,72 @@
 import { INSTITUTE_INFO } from '../coursesData.js';
 
-export function setupCourseModal(onCloseCallback) {
-  const modalOverlay = document.getElementById('course-modal');
-  const modalContainer = document.getElementById('modal-container');
+export function setupCourseModal() {
+  const overlay = document.getElementById('course-modal');
+  const container = document.getElementById('modal-container');
   const closeBtn = document.getElementById('modal-close-btn');
+  let returnFocus = null;
 
-  const hideModal = () => {
-    modalOverlay.classList.remove('active');
+  const hide = () => {
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    if (onCloseCallback) onCloseCallback();
+    if (returnFocus) returnFocus.focus();
   };
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', hideModal);
-  }
-
-  modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) hideModal();
-  });
-
+  closeBtn?.addEventListener('click', hide);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) hide(); });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-      hideModal();
-    }
+    if (e.key === 'Escape' && overlay.classList.contains('active')) hide();
   });
 
   return {
-    open: (course) => {
-      renderCourseDetails(course, modalContainer);
-      modalOverlay.classList.add('active');
+    open: (course, trigger) => {
+      returnFocus = trigger || null;
+      render(course, container);
+      overlay.classList.add('active');
+      overlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => closeBtn?.focus());
     },
-    close: hideModal
+    close: hide,
   };
 }
 
-function renderCourseDetails(course, container) {
-  const whatsappMsg = encodeURIComponent(
-    `Hello Digital Universe Institute, I am interested in enrolling for the "${course.title}" course. Please share batch details!`
+function render(course, container) {
+  const msg = encodeURIComponent(
+    `Hi Digital Universe, I'm interested in the "${course.title}" course. Please share the next batch details.`
   );
-  const whatsappUrl = `https://wa.me/${INSTITUTE_INFO.whatsapp}?text=${whatsappMsg}`;
+  const waUrl = `https://wa.me/${INSTITUTE_INFO.whatsapp}?text=${msg}`;
 
   container.innerHTML = `
-    <div class="modal-header" style="border-left: 4px solid ${course.color};">
-      <div class="modal-badge-group">
-        <span class="course-num-pill" style="background: ${course.color}22; color: ${course.color}; border: 1px solid ${course.color}66;">
-          Module ${course.number}
-        </span>
-        <span class="course-cat-pill">${course.category}</span>
-        <span class="course-badge-highlight">${course.badge}</span>
-      </div>
-      <h2 class="modal-title">${course.title}</h2>
-      <p class="modal-summary">${course.summary}</p>
-    </div>
-
-    <div class="modal-story-card">
-      <div class="story-icon">🌌</div>
-      <div class="story-text">
-        <h4>Learning Journey Story</h4>
-        <p>"${course.story}"</p>
-      </div>
-    </div>
+    <p class="modal-cat">${course.category}</p>
+    <h2 class="modal-title" id="modal-title">${course.title}</h2>
+    <p class="modal-summary">${course.story}</p>
 
     <div class="modal-grid">
-      <div class="modal-col">
-        <h3><i data-lucide="book-open"></i> Key Modules Covered</h3>
-        <ul class="modules-list">
-          ${course.modules.map(mod => `<li><i data-lucide="check-circle-2" style="color: ${course.color};"></i> ${mod}</li>`).join('')}
+      <div>
+        <h3>What you'll learn</h3>
+        <ul class="tick-list">
+          ${course.modules.map(m => `<li><i data-lucide="check"></i> ${m}</li>`).join('')}
         </ul>
       </div>
-
-      <div class="modal-col">
-        <h3><i data-lucide="award"></i> Skills You Will Acquire</h3>
-        <div class="skills-flex">
-          ${course.skills.map(sk => `<span class="skill-tag" style="background: ${course.color}15; border-color: ${course.color}44; color: #fff;">${sk}</span>`).join('')}
-        </div>
-
-        <div class="duration-box">
-          <i data-lucide="clock" style="color: ${course.color};"></i>
-          <div>
-            <strong>Course Duration</strong>
-            <span>${course.duration} (Flexible Shifts Available)</span>
-          </div>
-        </div>
+      <div>
+        <h3>Skills you'll leave with</h3>
+        <ul class="chip-list">
+          ${course.skills.map(s => `<li>${s}</li>`).join('')}
+        </ul>
+        <p class="modal-duration"><i data-lucide="clock"></i> ${course.duration}, flexible batch timings</p>
       </div>
     </div>
 
     <div class="modal-actions">
-      <a href="${whatsappUrl}" target="_blank" rel="noopener" class="btn btn-primary" style="background: linear-gradient(135deg, ${course.color}, #0066ff); border: none;">
-        <i data-lucide="message-square"></i> Enroll via WhatsApp
+      <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-gold">
+        <i data-lucide="message-circle"></i> Enrol on WhatsApp
       </a>
-      <a href="tel:${INSTITUTE_INFO.phone.replace(/\s+/g, '')}" class="btn btn-secondary">
-        <i data-lucide="phone"></i> Call Hotline: ${INSTITUTE_INFO.phone}
+      <a href="tel:${INSTITUTE_INFO.phone.replace(/\s+/g, '')}" class="btn btn-ghost">
+        <i data-lucide="phone"></i> Call ${INSTITUTE_INFO.phone}
       </a>
     </div>
   `;
-
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
+  if (window.lucide) window.lucide.createIcons();
 }

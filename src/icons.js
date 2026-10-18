@@ -4,7 +4,7 @@
 import {
   createIcons,
   AlertCircle, ArrowRight, Award, BookOpen, Briefcase, Calculator,
-  CheckCircle2, ClipboardCheck, Clock, Code2, FileSpreadsheet, GraduationCap,
+  Check, CheckCircle2, ClipboardCheck, Clock, Code2, FileSpreadsheet, GraduationCap,
   Heart, Keyboard, Layers, PanelsTopLeft, Mail, MapPin, MessageCircle,
   MessageSquare, Monitor, Navigation, Palette, Phone, Send, ShieldCheck,
   Sparkles, TrendingUp, Users, Video, Wifi, X,
@@ -12,7 +12,7 @@ import {
 
 const icons = {
   AlertCircle, ArrowRight, Award, BookOpen, Briefcase, Calculator,
-  CheckCircle2, ClipboardCheck, Clock, Code2, FileSpreadsheet, GraduationCap,
+  Check, CheckCircle2, ClipboardCheck, Clock, Code2, FileSpreadsheet, GraduationCap,
   Heart, Keyboard, Layers, Layout: PanelsTopLeft, Mail, MapPin, MessageCircle,
   MessageSquare, Monitor, Navigation, Palette, Phone, Send, ShieldCheck,
   Sparkles, TrendingUp, Users, Video, Wifi, X,
