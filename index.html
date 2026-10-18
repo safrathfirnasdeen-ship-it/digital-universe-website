@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#030611">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <title>Digital Universe Training Institute | Koothanallur</title>
   <meta name="description" content="Empower your skills at Digital Universe Training Institute, Koothanallur. Quality computer education, MS-Office, Tally Prime, DTP, English Speaking, Hardware & Typing.">
   <meta name="google-site-verification" content="wD6nCH7A3pao3PueSfF9prBkJGvcEp9wMk7KFxIwTy4" />
@@ -56,7 +59,7 @@
         </div>
       </a>
 
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-menu">
         <li><a href="#home" class="nav-link active">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#courses" class="nav-link">Courses</a></li>
@@ -71,6 +74,10 @@
         <a href="#contact" class="btn-enroll">
           <i data-lucide="sparkles"></i> Enroll Now
         </a>
+        <button type="button" class="menu-toggle" id="mobile-menu-toggle"
+          aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
@@ -384,7 +391,7 @@
               </span>
               <div>
                 <p style="font-size:0.7rem;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;">WhatsApp</p>
-                <a href="https://wa.me/917845360460" target="_blank" style="color:#25d366;font-weight:600;font-size:0.95rem;text-decoration:none;">+91 7845 360 460</a>
+                <a href="https://wa.me/917845360460" target="_blank" rel="noopener" style="color:#25d366;font-weight:600;font-size:0.95rem;text-decoration:none;">+91 7845 360 460</a>
               </div>
             </div>
           </div>
@@ -405,7 +412,7 @@
           </div>
 
           <p id="form-desc" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">
-            Fill in your details — we'll reach you on WhatsApp &amp; Email instantly.
+            Fill in your details — we'll reach you on WhatsApp &amp; Email.
           </p>
 
           <form id="quick-inquiry-form" class="inquiry-form-rich">

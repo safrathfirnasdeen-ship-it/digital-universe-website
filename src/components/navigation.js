@@ -13,7 +13,11 @@ export function setupNavigation() {
       // Close mobile menu
       if (navMenu && navMenu.classList.contains('active')) {
         navMenu.classList.remove('active');
-        if (mobileToggle) mobileToggle.classList.remove('active');
+        if (mobileToggle) {
+          mobileToggle.classList.remove('active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          mobileToggle.setAttribute('aria-label', 'Open menu');
+        }
       }
     });
   });
@@ -21,8 +25,10 @@ export function setupNavigation() {
   // Mobile menu toggle
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', () => {
-      mobileToggle.classList.toggle('active');
-      navMenu.classList.toggle('active');
+      const open = navMenu.classList.toggle('active');
+      mobileToggle.classList.toggle('active', open);
+      mobileToggle.setAttribute('aria-expanded', String(open));
+      mobileToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     });
   }
 

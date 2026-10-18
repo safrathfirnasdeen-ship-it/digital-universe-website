@@ -775,7 +775,7 @@ section {
 /* --- COURSES CATALOG GRID --- */
 .courses-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(310px, 100%), 1fr));
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
@@ -1333,4 +1333,114 @@ section {
     scroll-behavior: auto !important;
   }
   .shooting-stars { display: none; }
+}
+
+/* ============================================================
+   MOBILE HEADER — hamburger menu
+   ============================================================ */
+.menu-toggle { display: none; }
+
+@media (max-width: 900px) {
+  .header { padding: 0.7rem 1rem; }
+  .logo-text h1 { font-size: 0.95rem; }
+  .logo-text span { font-size: 0.5rem; letter-spacing: 0.5px; }
+  .header-right { gap: 0.6rem; }
+  .header-right .btn-enquiry { display: none; }
+  .header-right .btn-enroll { padding: 0.55rem 0.9rem; font-size: 0.8rem; }
+
+  .menu-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0 11px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .menu-toggle span {
+    display: block;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+  .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem 1rem 1rem;
+    background: rgba(3, 6, 17, 0.97);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: none;
+  }
+  .nav-links.active { display: flex; }
+  .nav-links li { border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+  .nav-links li:last-child { border-bottom: none; }
+  .nav-link { display: block; padding: 0.9rem 0.25rem; font-size: 1rem; }
+}
+
+@media (max-width: 380px) {
+  .logo-text span { display: none; }
+}
+
+/* Enquiry form — send options shown after submit */
+.send-options {
+  margin-top: 0.5rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+}
+.send-options-msg { color: var(--cyan-bright); font-size: 0.9rem; margin-bottom: 0.7rem; }
+.send-options-btns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.send-opt {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.6rem 1rem; border-radius: 50px;
+  font-weight: 600; font-size: 0.85rem; text-decoration: none;
+}
+.send-opt svg { width: 16px; height: 16px; }
+.send-opt-wa { background: #25d366; color: #04210f; }
+.send-opt-mail { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+
+/* ============================================================
+   PHONE LAYOUT — keep everything inside the screen width
+   ============================================================ */
+@media (max-width: 1024px) {
+  .hero-container { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 640px) {
+  section { padding: 6.5rem 1.1rem 3.5rem; min-height: auto; }
+  .hero-title-main { font-size: clamp(2.2rem, 11vw, 3rem); }
+  .hero-btn-group { flex-wrap: wrap; }
+  .hero-meta-bar { flex-wrap: wrap; gap: 0.4rem 1rem; }
+  .header-right .btn-enroll { display: none; }
+  .fixed-call-btn { padding: 0.7rem 1.1rem; font-size: 0.85rem; }
+  .chapter-pill { max-width: 100%; white-space: normal; }
+  .special-features-grid { grid-template-columns: 1fr 1fr; }
+  .scholarship-banner { padding: 1.6rem 1.2rem; }
+}
+
+html, body { overflow-x: clip; }
+
+@media (max-width: 640px) {
+  .header-container { min-width: 0; }
+  .logo-brand { min-width: 0; }
+  .hero-logo-stats { gap: 0.6rem; padding-left: 0.8rem; padding-right: 0.8rem; max-width: 100%; }
+  .rich-card { padding: 1.5rem 1.2rem; }
+}
+@media (max-width: 420px) {
+  .special-features-grid { grid-template-columns: 1fr; }
 }

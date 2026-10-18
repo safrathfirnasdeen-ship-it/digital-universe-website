@@ -85,14 +85,15 @@ export function setupContactSection() {
       const emailBody = isEnquiry
         ? `Hello,\n\nI have an enquiry:\n\nName: ${name}\nPhone: ${phone}\nMessage: ${message || 'N/A'}\n\nSent from Digital Universe Training Institute Website.`
         : `Hello,\n\nI would like to enroll in the following course:\n\nName: ${name}\nPhone: ${phone}\nCourse: ${course}\nMessage: ${message || 'N/A'}\n\nSent from Digital Universe Training Institute Website.`;
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(INSTITUTE_INFO.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+      const mailUrl = `mailto:${INSTITUTE_INFO.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
 
-      // Show status
-      showStatus('Redirecting to WhatsApp & Gmail...', 'success');
+      // Open WhatsApp immediately, inside the click, so browsers don't
+      // treat it as an unwanted pop-up (the old delayed tabs got blocked).
+      const waWindow = window.open(waUrl, '_blank');
+      if (waWindow) waWindow.opener = null;
 
-      // Open WhatsApp first, then Gmail in new tabs
-      setTimeout(() => window.open(waUrl, '_blank'), 400);
-      setTimeout(() => window.open(gmailUrl, '_blank'), 800);
+      // Email is offered as a tap-able button instead of a second pop-up.
+      showSendOptions(waUrl, mailUrl, !waWindow);
     });
   }
 
@@ -118,5 +119,29 @@ function showStatus(msg, type) {
       <i data-lucide="${icon}" style="width:16px;height:16px;flex-shrink:0;"></i>
       ${msg}
     </div>`;
+  if (window.lucide) window.lucide.createIcons();
+}
+
+// ── After submit: buttons to send via WhatsApp / email ─────────
+function showSendOptions(waUrl, mailUrl, waBlocked) {
+  const box = document.getElementById('form-status');
+  if (!box) return;
+  box.innerHTML = `
+    <div class="send-options">
+      <p class="send-options-msg"></p>
+      <div class="send-options-btns">
+        <a class="send-opt send-opt-wa" target="_blank" rel="noopener">
+          <i data-lucide="message-circle"></i> Open WhatsApp
+        </a>
+        <a class="send-opt send-opt-mail">
+          <i data-lucide="mail"></i> Also send by Email
+        </a>
+      </div>
+    </div>`;
+  box.querySelector('.send-options-msg').textContent = waBlocked
+    ? 'Tap below to send your details on WhatsApp or by email.'
+    : 'WhatsApp opened in a new tab — press Send there. You can also email us:';
+  box.querySelector('.send-opt-wa').href = waUrl;
+  box.querySelector('.send-opt-mail').href = mailUrl;
   if (window.lucide) window.lucide.createIcons();
 }
