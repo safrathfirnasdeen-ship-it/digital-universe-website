@@ -1,3 +1,6 @@
+import '@fontsource-variable/newsreader/wght.css';
+import '@fontsource-variable/hanken-grotesk/wght.css';
+import './style.css';
 import './icons.js';
 import { COURSES_DATA } from './coursesData.js';
 import { setupCourseModal } from './components/courseModal.js';
@@ -35,7 +38,7 @@ function initStarCanvas() {
   const ctx = canvas.getContext('2d');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isSmall = window.innerWidth < 768;
-  const STAR_COUNT = isSmall ? 110 : 220;
+  const STAR_COUNT = isSmall ? 70 : 140;
   let stars = [];
   let w = 0, h = 0;
 
@@ -134,34 +137,27 @@ function renderRichCourseCards(courses, modal) {
   if (!container) return;
 
   container.innerHTML = courses.map(course => `
-    <div class="rich-card course-card-rich" data-id="${course.id}">
-      <div class="card-num-watermark">MODULE ${course.number}</div>
-      <div class="card-icon-badge">
-        <i data-lucide="${course.icon}"></i>
-      </div>
-      <h3>${course.title}</h3>
-      <p style="margin-bottom: 1.2rem; min-height: 2.8em;">${course.summary}</p>
-      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.8rem; font-size: 0.85rem;">
-        <span style="color: var(--cyan-bright); font-weight: 600;">${course.duration}</span>
-        <span class="course-arrow" style="font-weight: 600; display: inline-flex; align-items: center; gap: 0.3rem;">
-          View Syllabus <i data-lucide="arrow-right"></i>
+    <li>
+      <button type="button" class="course" data-id="${course.id}" aria-haspopup="dialog">
+        <span class="course-icon"><i data-lucide="${course.icon}"></i></span>
+        <span class="course-body">
+          <span class="course-title">${course.title}</span>
+          <span class="course-summary">${course.summary}</span>
         </span>
-      </div>
-    </div>
+        <span class="course-meta">
+          <span class="course-duration">${course.duration}</span>
+          <span class="course-link">Syllabus <i data-lucide="arrow-right"></i></span>
+        </span>
+      </button>
+    </li>
   `).join('');
 
-  // Add click listeners to open modal
-  container.querySelectorAll('.course-card-rich').forEach(card => {
-    card.addEventListener('click', () => {
-      const courseId = card.getAttribute('data-id');
-      const course = COURSES_DATA.find(c => c.id === courseId);
-      if (course) {
-        modal.open(course);
-      }
+  container.querySelectorAll('.course').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const course = COURSES_DATA.find(c => c.id === btn.dataset.id);
+      if (course) modal.open(course, btn);
     });
   });
 
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
+  if (window.lucide) window.lucide.createIcons();
 }
