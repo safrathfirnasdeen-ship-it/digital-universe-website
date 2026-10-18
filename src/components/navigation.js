@@ -1,4 +1,4 @@
-export function setupNavigation(threeSceneManager) {
+export function setupNavigation() {
   const navLinks = document.querySelectorAll('.nav-link');
   const mobileToggle = document.getElementById('mobile-menu-toggle');
   const navMenu = document.getElementById('nav-menu');
@@ -7,18 +7,11 @@ export function setupNavigation(threeSceneManager) {
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const targetId = link.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth' });
-        if (threeSceneManager) {
-          threeSceneManager.resetCamera();
-        }
-      }
+      const targetSection = document.querySelector(link.getAttribute('href'));
+      if (targetSection) targetSection.scrollIntoView({ behavior: 'smooth' });
 
       // Close mobile menu
-      if (navMenu.classList.contains('active')) {
+      if (navMenu && navMenu.classList.contains('active')) {
         navMenu.classList.remove('active');
         if (mobileToggle) mobileToggle.classList.remove('active');
       }
@@ -33,21 +26,15 @@ export function setupNavigation(threeSceneManager) {
     });
   }
 
-  // Active section indicator on scroll
-  const sections = document.querySelectorAll('section[id]');
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-
-    sections.forEach(current => {
-      const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 120;
-      const sectionId = current.getAttribute('id');
-
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        document.querySelector(`.nav-link[href*="${sectionId}"]`)?.classList.add('active');
-      } else {
-        document.querySelector(`.nav-link[href*="${sectionId}"]`)?.classList.remove('active');
-      }
+  // Active section indicator — IntersectionObserver instead of measuring
+  // every section on every scroll event.
+  const linkFor = id => document.querySelector(`.nav-link[href="#${id}"]`);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach(l => l.classList.remove('active'));
+      linkFor(entry.target.id)?.classList.add('active');
     });
-  });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
 }

@@ -6,8 +6,11 @@
   <title>Digital Universe Training Institute | Koothanallur</title>
   <meta name="description" content="Empower your skills at Digital Universe Training Institute, Koothanallur. Quality computer education, MS-Office, Tally Prime, DTP, English Speaking, Hardware & Typing.">
   <meta name="google-site-verification" content="wD6nCH7A3pao3PueSfF9prBkJGvcEp9wMk7KFxIwTy4" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap">
+  <link rel="preload" as="image" type="image/webp" href="/assets/du-banner-1024.webp" imagesrcset="/assets/du-banner-600.webp 600w, /assets/du-banner-1024.webp 1024w" imagesizes="(max-width: 600px) 92vw, 540px" fetchpriority="high">
   <link rel="stylesheet" href="./src/style.css">
-  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -41,9 +44,6 @@
 
   <!-- Canvas for JS particle starfield -->
   <canvas id="star-canvas"></canvas>
-
-  <!-- Three.js transparent canvas (floating planet on top) -->
-  <canvas id="bg-canvas"></canvas>
 
   <!-- Fixed Top Header -->
   <header class="header">
@@ -121,11 +121,18 @@
         <div class="hero-logo-panel">
           <div class="hero-banner-wrap">
             <div class="hero-banner-glow"></div>
-            <img
-              src="/assets/du-banner.jpg"
-              alt="Digital Universe Training Institute — Koothanallur"
-              class="hero-banner-img"
-            />
+            <picture>
+              <source type="image/webp"
+                srcset="/assets/du-banner-600.webp 600w, /assets/du-banner-1024.webp 1024w"
+                sizes="(max-width: 600px) 92vw, 540px">
+              <img
+                src="/assets/du-banner.jpg"
+                alt="Digital Universe Training Institute — Koothanallur"
+                class="hero-banner-img"
+                width="1024" height="523"
+                fetchpriority="high" decoding="async"
+              />
+            </picture>
           </div>
 
           <!-- Stats row below -->
